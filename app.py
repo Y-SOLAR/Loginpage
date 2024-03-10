@@ -5,8 +5,6 @@ Created on Sun Mar 10 16:45:33 2024
 @author: Pasci
 """
 
-import streamlit as st
-
 
 # Create an empty container
 placeholder = st.empty()
@@ -23,7 +21,7 @@ with placeholder.form("login"):
 
 if submit:
     if email == actual_email and password == actual_password:
-       placeholder.empty.empty()
+        placeholder.empty()
         st.success("Login successful")
         st.session_state.username = email
         st.session_state.page = "home_page"
