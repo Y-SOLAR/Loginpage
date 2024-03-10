@@ -15,7 +15,7 @@ actual_email = "email"
 actual_password = "password"
 
 # Insert a form in the container
-with st.empty.form("login"):
+with placeholder.form("login"):
     st.markdown("#### Enter your credentials")
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
@@ -23,7 +23,7 @@ with st.empty.form("login"):
 
 if submit:
     if email == actual_email and password == actual_password:
-        st.empty.empty()
+       placeholder.empty.empty()
         st.success("Login successful")
         st.session_state.username = email
         st.session_state.page = "home_page"
