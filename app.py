@@ -1,17 +1,18 @@
 import streamlit as st
+import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import SafeLoader
 
-placeholder = st.empty()
+with open('https://github.com/Y-SOLAR/Loginpage/edit/main/config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
-# Replace the placeholder with some text:
-placeholder.text("Hello")
 
-# Replace the text with a chart:
-placeholder.line_chart({"data": [1, 5, 2, 6]})
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
 
-# Replace the chart with several elements:
-with placeholder.container():
-    st.write("This is one element")
-    st.write("This is another")
-
-# Clear all those elements:
-placeholder.empty()
+authenticator.login()
